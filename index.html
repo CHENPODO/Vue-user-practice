@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<style>
+  #app {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    width: 200px;
+    padding: 5px;
+  }
+
+  .buttonSetting {
+    display: flex;
+    gap: 10px;
+  }
+</style>
+<body>
+  <div id="app">
+    帳號: <input type="text" v-model="userName">
+    密碼: <input type="password" v-model="password">
+    <div class="buttonSetting">
+      <button @click="login">登錄</button>
+      <button @click="reset">重設</button>
+    </div>
+  </div>
+  
+  <!-- 引入 Vue 3 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script> -->
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    // Vue 3 的寫法
+    const { createApp } = Vue;
+
+    // 建立 Vue 應用
+    const app = createApp({
+      data() {
+        return {
+          userName: '',
+          password: ''
+        };
+      },
+      methods: {
+        login() {
+          console.log(this.userName)
+          // if (this.userName && this.password) {
+          //   console.log("帳號:", this.userName);
+          //   console.log("密碼:", this.password);
+          //   alert("登錄成功！");
+          // } else {
+          //   alert("請輸入帳號和密碼");
+          // }
+        },
+        
+        reset() {
+          this.userName = '';
+          this.password = '';
+        }
+      }
+    });
+
+    // 掛載應用至 #app
+    app.mount('#app');
+  </script>
+</body>
+</html>
